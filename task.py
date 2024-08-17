@@ -9,21 +9,27 @@ nr_symbols = int(input("How many symbols would you like?\n"))
 nr_numbers = int(input("How many numbers would you like?\n"))
 
 total_number_of_characters = nr_letters + nr_symbols + nr_numbers
+next_random_character = ""
 password = ""
 
 for index in range(0, total_number_of_characters):
     character = random.randint(0, 2)
     if character == 0 and nr_letters > 0:
-        next_random_character = letters[random.randint(0, len(letters))]
+        next_random_letter = random.randint(0, len(letters) - 1)
+        next_random_character = letters[next_random_letter]
         nr_letters -= 1
+        password += next_random_character
     elif character == 1 and nr_symbols > 0:
-        next_random_character = symbols[random.randint(0, len(symbols))]
+        next_random_symbol = random.randint(0, len(symbols) - 1)
+        next_random_character = symbols[next_random_symbol]
         nr_symbols -= 1
+        password += next_random_character
     elif nr_numbers > 0:
-        next_random_character = numbers[random.randint(0, len(numbers))]
+        next_random_number = random.randint(0, len(numbers) - 1)
+        next_random_character = numbers[next_random_number]
         nr_numbers -= 1
-    password += next_random_character
-print("Your randompassword is: " + password)
+        password += next_random_character
+print("Your random password is: " + password)
 
 
 
